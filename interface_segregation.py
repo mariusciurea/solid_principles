@@ -2,6 +2,10 @@
 # Author: Uncle Bob (Robert C. Martin)
 # Principle: Clients (subclasses) should not be forced to implement interfaces (methods) they do not use.
 
+
+# This violates the Interface Segregation principle
+
+
 # from abc import ABC, abstractmethod
 #
 #
@@ -36,6 +40,8 @@
 # print(txt.get_pressed_key())
 # txt.click()
 
+
+# This follows the Interface Segregation principle
 
 from abc import ABC, abstractmethod
 

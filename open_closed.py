@@ -2,7 +2,8 @@
 
 # Author: Bertrand Meyer
 # Principle: Functions, classes, modules should be open for extension, but closed for modification
-# Example:
+
+
 # This violates the Open Closed principle
 
 # class Employee:
@@ -29,6 +30,9 @@
 #
 # emp = Employee('Diana', 'Popescu', 12333, 'IT')
 # print(emp.average_income())
+
+
+# This follows the Open Closed principle
 
 from abc import ABC, abstractmethod
 

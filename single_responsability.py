@@ -1,7 +1,8 @@
 # ############### S - Single Responsibility ########################
 # Author: Uncle Bob (Robert C. Martin) - Agile Manifesto signatories
 # Principle: A class should have only one reason to change - A class should have only 1 responsibility
-# Example:
+
+
 # This violates the Single Responsibility principle
 
 # class Student:
@@ -22,6 +23,9 @@
 #                f'{self.email}\n'
 #         with open('student.txt', 'w') as f:
 #             f.write(info)
+
+
+# This follows the Single Responsibility principle
 
 class Student:
     def __init__(self, firstname, lastname, university, cnp):

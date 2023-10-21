@@ -1,7 +1,8 @@
 # ################# D - Dependency Inversion #############################
 # Principle: High-level modules should not depend on low-level modules.
-# Both should depend on abstractions - The scope of this principle is to
-# eliminate the coupling
+            # Both should depend on abstractions - The scope of this principle is to
+            # eliminate the coupling
+
 
 # Example that violates the principle
 
@@ -26,6 +27,8 @@
 # txt = FileData('test.txt')
 # show = ShowData(txt)
 # show.print_data()
+
+# This follows the Dependency inversion principle
 
 import csv
 from abc import ABC, abstractmethod

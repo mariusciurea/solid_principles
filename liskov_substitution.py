@@ -1,11 +1,12 @@
 # ############### L - Liskov Substitution #################################
 # Author: Barbara Liskov
 # Principle: Subtypes must be substitutable for their base types.
-# A child class must be substitutable for its parent class
-# Example: We use the same example with the employees.
+            # A child class must be substitutable for its parent class
+            # Example: We use the same example with the employees.
 
 # Example that violates this principle
-#
+
+
 # import csv
 # from abc import ABC, abstractmethod
 #
@@ -35,8 +36,9 @@
 # for item in [text, file_csv]:
 #     item.save('test test test', 'test.txt')
 
-# Solve Liskov substitution
-# #
+
+# This follows Liskov substitution principle
+
 import csv
 from abc import ABC, abstractmethod
 
