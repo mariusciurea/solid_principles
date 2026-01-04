@@ -1,38 +1,42 @@
-# ############### O - Open Closed ##################################
+"""O - Open Closed
 
-# Author: Bertrand Meyer
-# Principle: Functions, classes, modules should be open for extension, but closed for modification
+Author: Bertrand Meyer
+Principle: Functions, classes, modules should be open for extension, but closed for modification
+"""
 
-
+# ==================================================================================
 # This violates the Open Closed principle
+# ==================================================================================
 
-# class Employee:
-#     def __init__(self, firstname, lastname, pid, department):
-#         self.firstname = firstname
-#         self.lastname = lastname
-#         self.pid = pid
-#         self.department = department
-#         if self.department == 'HR':
-#             self.salary_range = (1000, 2000)
-#         elif self.department == 'Finance':
-#             self.salary_range = (700, 1800)
-#         elif self.department == 'IT':
-#             self.salary_range = (1200, 2000)
-#
-#     def average_income(self):
-#         if self.department == 'HR':
-#             return (self.salary_range[0] + self.salary_range[1]) / 2
-#         elif self.department == 'Finance':
-#             return (self.salary_range[0] + self.salary_range[1]) / 2
-#         if self.department == 'IT':
-#             return (self.salary_range[0] + self.salary_range[1]) / 2
-#
-#
-# emp = Employee('Diana', 'Popescu', 12333, 'IT')
-# print(emp.average_income())
+class Employee:
+    def __init__(self, firstname, lastname, pid, department):
+        self.firstname = firstname
+        self.lastname = lastname
+        self.pid = pid
+        self.department = department
+        if self.department == 'HR':
+            self.salary_range = (1000, 2000)
+        elif self.department == 'Finance':
+            self.salary_range = (700, 1800)
+        elif self.department == 'IT':
+            self.salary_range = (1200, 2000)
+
+    def average_income(self):
+        if self.department == 'HR':
+            return (self.salary_range[0] + self.salary_range[1]) / 2
+        elif self.department == 'Finance':
+            return (self.salary_range[0] + self.salary_range[1]) / 2
+        if self.department == 'IT':
+            return (self.salary_range[0] + self.salary_range[1]) / 2
 
 
-# This follows the Open Closed principle
+emp = Employee('Diana', 'Popescu', 12333, 'IT')
+print(emp.average_income())
+
+
+# =================================================================================
+#               This follows the Open Closed principle
+# =================================================================================
 
 from abc import ABC, abstractmethod
 

@@ -1,34 +1,38 @@
-# ################# D - Dependency Inversion #############################
-# Principle: High-level modules should not depend on low-level modules.
-            # Both should depend on abstractions - The scope of this principle is to
-            # eliminate the coupling
+"""D - Dependency Inversion
 
+Principle: High-level modules should not depend on low-level modules.
+Both should depend on abstractions - The scope of this principle is to eliminate the coupling
+"""
 
+# ==================================================================================
 # Example that violates the principle
+# ==================================================================================
 
-# class ShowData:
-#     def __init__(self, data_from_txt):
-#         self.data_from_txt = data_from_txt
-#
-#     def print_data(self):
-#         print(self.data_from_txt.get_data_from_text())
-#
-#
-# class FileData:
-#     def __init__(self, file):
-#         self.file = file
-#
-#     def get_data_from_text(self):
-#         with open(self.file, 'r') as fr:
-#             content = fr.read()
-#         return content
-#
-#
-# txt = FileData('test.txt')
-# show = ShowData(txt)
-# show.print_data()
+class ShowData:
+    def __init__(self, data_from_txt):
+        self.data_from_txt = data_from_txt
 
+    def print_data(self):
+        print(self.data_from_txt.get_data_from_text())
+
+
+class FileData:
+    def __init__(self, file):
+        self.file = file
+
+    def get_data_from_text(self):
+        with open(self.file, 'r') as fr:
+            content = fr.read()
+        return content
+
+
+txt = FileData('test.txt')
+show = ShowData(txt)
+show.print_data()
+
+# ==================================================================================
 # This follows the Dependency inversion principle
+# ==================================================================================
 
 import csv
 from abc import ABC, abstractmethod
@@ -62,7 +66,7 @@ class CSVFile(FileType):
 
 
 class ShowData:
-    def __init__(self, data_from_file):
+    def __init__(self, data_from_file: FileType):
         self.data_from_file = data_from_file
 
     def print_data(self):

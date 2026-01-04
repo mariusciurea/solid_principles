@@ -1,32 +1,35 @@
-# ############### S - Single Responsibility ########################
-# Author: Uncle Bob (Robert C. Martin) - Agile Manifesto signatories
-# Principle: A class should have only one reason to change - A class should have only 1 responsibility
+"""S - Single Responsibility
 
+Author: Uncle Bob (Robert C. Martin) - Agile Manifesto signatories
+Principle: A class should have only one reason to change - A class should have only 1 responsibility
+"""
 
+# ==================================================================================
 # This violates the Single Responsibility principle
+# ==================================================================================
 
-# class Student:
-#     def __init__(self, firstname, lastname, university, cnp):
-#         self.firstname = firstname
-#         self.lastname = lastname
-#         self.university = university
-#         self.cnp = cnp
-#
-#     @property
-#     def email(self):
-#         return f'{self.firstname.lower()}.{self.lastname.lower()}@{self.university.lower()}.com'
-#
-#     def save_student_info(self):
-#         info = f'{self.firstname}\n' \
-#                f'{self.lastname}\n' \
-#                f'{self.university}\n' \
-#                f'{self.email}\n'
-#         with open('student.txt', 'w') as f:
-#             f.write(info)
+class Student:
+    def __init__(self, firstname, lastname, university, cnp):
+        self.firstname = firstname
+        self.lastname = lastname
+        self.university = university
+        self.cnp = cnp
 
+    @property
+    def email(self):
+        return f'{self.firstname.lower()}.{self.lastname.lower()}@{self.university.lower()}.com'
 
-# This follows the Single Responsibility principle
+    def save_student_info(self):
+        info = f'{self.firstname}\n' \
+               f'{self.lastname}\n' \
+               f'{self.university}\n' \
+               f'{self.email}\n'
+        with open('student.txt', 'w') as f:
+            f.write(info)
 
+# =================================================================================
+#               This follows the Single Responsibility principle
+# =================================================================================
 class Student:
     def __init__(self, firstname, lastname, university, cnp):
         self.firstname = firstname
@@ -48,3 +51,26 @@ class SaveStudentToText:
         with open(self.path, 'w') as fw:
             fw.write(student_data)
 
+
+class SaveStudentToDatabase:
+    def __init__(self, connection_string):
+        self.connection = connection_string
+
+    def save_student(self, student: Student):
+        # Save to database - Student class unchanged
+        pass
+
+
+class SaveStudentToJSON:
+    def __init__(self, json_path):
+        self.path = json_path
+
+    def save_student(self, student: Student):
+        import json
+        data = {
+            'firstname': student.firstname,
+            'lastname': student.lastname,
+            'cnp': student.cnp
+        }
+        with open(self.path, 'w') as f:
+            json.dump(data, f)
